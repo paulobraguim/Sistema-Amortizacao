@@ -22,6 +22,8 @@ class Amortizacao{
 
         //Encontra o valor da Amortização
         $this->amortizacao = $this->saldoDevedor / $this->parcelas; 
+
+        //Operação        
         for($i = 0;  $i <= $this->parcelas; $i++){ 
             
             if($i == 0){
@@ -46,6 +48,10 @@ class Amortizacao{
             $this->saldoDevedor -= $this->amortizacao;
 
         }
+    }
+
+    public function modeloPrice(){
+        // Em construção
     }
 
 }
