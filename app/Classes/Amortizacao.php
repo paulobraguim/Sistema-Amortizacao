@@ -21,13 +21,13 @@ class Amortizacao{
     public function modeloSac(){
 
         //Encontra o valor da Amortização
-        $this->amortizacao = $this->saldoDevedor / $this->parcelas;             
-
-        
-        for($i = 0;  $i <= $this->parcelas; $i++){     
-            echo "<pre>";       
-            echo $i . " de " . $this->parcelas . "&nbsp;&nbsp;&nbsp;" .  " $this->juros " . "&nbsp;&nbsp;&nbsp;" . " $this->amortizacao". "&nbsp;&nbsp;&nbsp;" . 
-            " $this->prestacao " . "&nbsp;&nbsp;&nbsp;" . " $this->saldoDevedor " . "<br/>";
+        $this->amortizacao = $this->saldoDevedor / $this->parcelas; 
+        for($i = 0;  $i <= $this->parcelas; $i++){  
+            echo "<pre>";   
+            echo "<div style='color:black;padding:15px;margin-right:10px;'>";       
+            echo $i . " de " . $this->parcelas . " | $this->juros " . " | $this->amortizacao " . 
+            " | $this->prestacao " . " | $this->saldoDevedor " . "<br/>";
+            echo "</div>";
             echo "</pre>";
 
             $this->juros = ($this->saldoDevedor * $this->taxa) / 100;            
@@ -35,7 +35,6 @@ class Amortizacao{
             $this->saldoDevedor -= $this->amortizacao;
 
         }
-
     }
 
 }
