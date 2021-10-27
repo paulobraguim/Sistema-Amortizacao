@@ -17,7 +17,13 @@ class Amortizacao{
 
     }
 
-
+    /**
+     * Caracterizado pela Amortização Constante
+     * Amortização = Saldo Devedor / Parcelas
+     * Juros = Saldo Devedor * taxa 
+     * Prestação = Juros + Amortização
+     * Saldo Devedor -= Amortização 
+     */
     public function modeloSac(){
 
         //Encontra o valor da Amortização
@@ -50,6 +56,9 @@ class Amortizacao{
         }
     }
 
+    /**
+     * Caracterizado pela Prestação Constante
+     */
     public function modeloPrice(){
         // Em construção
     }
