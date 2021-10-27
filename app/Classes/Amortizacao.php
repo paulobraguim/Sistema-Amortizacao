@@ -29,15 +29,15 @@ class Amortizacao{
             if($i == 0){
 
                 echo "<pre>";
-                echo "Amortização: R$ $this->amortizacao " . " - Saldo Devedor: R$ $this->saldoDevedor";  
+                echo "Amortização: R$ " . number_format($this->amortizacao, 2, ',', '.') . " - Saldo Devedor: R$ " . number_format($this->saldoDevedor, 2, ',', '.');  
                 echo "</pre>";
 
             }else {
 
                 echo "<pre>";   
                 echo "<div style='color:black;padding:15px;margin-right:10px;'>";       
-                echo $i . " de " . $this->parcelas . " | $this->juros " . " | $this->amortizacao " . 
-                " | $this->prestacao " . " | $this->saldoDevedor " . "<br/>";
+                echo $i . " de " . $this->parcelas . " | " . number_format($this->juros, 2,',', '.')  . " | " . number_format($this->amortizacao, 2, ',', '.')  . 
+                " | " . number_format($this->prestacao, 2, ',', '.') . " | " . number_format($this->saldoDevedor, 2, ',', '.')  . "<br/>";
                 echo "</div>";
                 echo "</pre>";
 
