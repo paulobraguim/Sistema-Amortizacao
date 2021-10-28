@@ -60,7 +60,41 @@ class Amortizacao{
      * Caracterizado pela Prestação Constante
      */
     public function modeloPrice(){
-        // Em construção
+
+        //Conversão da taxa
+        $calculoTaxa = $this->taxa / 100;
+
+        //Define o valor da prestação
+        $this->prestacao = $this->saldoDevedor * $calculoTaxa * (pow($calculoTaxa + 1, $this->parcelas)) / (pow(1 + $calculoTaxa, $this->parcelas) - 1);
+
+        echo number_format($this->prestacao, 2, ',', '.');
+        
+        //Operação        
+        for($i = 0;  $i <= $this->parcelas; $i++){ 
+            
+            if($i == 0){
+
+                echo "<pre>";
+                echo "Prestação: R$ " . number_format($this->prestacao, 2, ',', '.') . " - Saldo Devedor: R$ " . number_format($this->saldoDevedor, 2, ',', '.');  
+                echo "</pre>";
+
+            }else {
+
+                echo "<pre>";   
+                echo "<div style='color:black;padding:15px;margin-right:10px;'>";       
+                echo $i . " de " . $this->parcelas . " | " . number_format($this->juros, 2,',', '.')  . " | " . number_format($this->amortizacao, 2, ',', '.')  . 
+                " | " . number_format($this->prestacao, 2, ',', '.') . " | " . number_format($this->saldoDevedor, 2, ',', '.')  . "<br/>";
+                echo "</div>";
+                echo "</pre>";
+
+            }      
+            
+            $this->juros = ($this->saldoDevedor * $this->taxa) / 100;
+            $this->amortizacao = $this->prestacao - $this->juros; 
+            $this->saldoDevedor -= $this->amortizacao;            
+
+        }        
+        
     }
 
 }
