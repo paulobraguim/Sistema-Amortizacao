@@ -7,19 +7,30 @@ $taxa = $_POST['taxa'];
 $parcelas = $_POST['parcelas'];
 $tipo = $_POST['tipo'];
 
-$var = new Amortizacao($saldoDevedor, $parcelas, $taxa);
-
-switch($tipo){    
-
-    case 1:        
-        $var->modeloPrice();    
-        break;
+if(!isset($_POST['saldoDevedor']) || !isset($_POST['taxa']) || !isset($_POST['parcelas']) || !isset($_POST['tipo'])){
     
-    case 2: 
-        $var->modeloSac(); 
-        break;
+    header('Location: /');
+    exit;
+
+}else {
+
+    $var = new Amortizacao($saldoDevedor, $parcelas, $taxa);
+
+    switch($tipo){    
+
+        case 1:        
+            $var->modeloPrice();    
+            break;
+        
+        case 2: 
+            $var->modeloSac(); 
+            break;
+        
+        default: 
+            "Valores inválidos!";    
     
-    default: 
-        "Valores inválidos!";    
+    }
 
 }
+
+
