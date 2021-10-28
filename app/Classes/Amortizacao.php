@@ -56,6 +56,8 @@ class Amortizacao{
             $this->saldoDevedor -= $this->amortizacao;
 
         }
+
+        echo "<p style='color:black;padding:15px;margin-right:10px;'><a href='/'>Clique aqui para fazer uma nova simulação</a></p>";
     }
 
     /**
@@ -99,7 +101,9 @@ class Amortizacao{
             $this->amortizacao = $this->prestacao - $this->juros; 
             $this->saldoDevedor -= $this->amortizacao;            
 
-        }        
+        }
+        
+        echo "<p style='color:black;padding:15px;margin-right:10px;'><a href='/'>Clique aqui para fazer uma nova simulação</a></p>";
         
     }
 
