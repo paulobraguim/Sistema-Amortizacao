@@ -7,15 +7,15 @@ $taxa = $_POST['taxa'];
 $parcelas = $_POST['parcelas'];
 $tipo = $_POST['tipo'];
 
-switch($tipo){
+$var = new Amortizacao($saldoDevedor, $parcelas, $taxa);
 
-    case 1: 
-        $var = new Amortizacao($saldoDevedor, $parcelas, $taxa);
+switch($tipo){    
+
+    case 1:        
         $var->modeloPrice();    
         break;
     
     case 2: 
-        $var = new Amortizacao($saldoDevedor, $parcelas, $taxa);
         $var->modeloSac(); 
         break;
     

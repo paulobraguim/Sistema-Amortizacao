@@ -27,16 +27,18 @@ class Amortizacao{
     public function modeloSac(){
 
         //Encontra o valor da Amortização
-        $this->amortizacao = $this->saldoDevedor / $this->parcelas; 
+        $this->amortizacao = $this->saldoDevedor / $this->parcelas;         
 
         //Operação        
         for($i = 0;  $i <= $this->parcelas; $i++){ 
             
-            if($i == 0){
+            if($i == 0){                
 
                 echo "<pre>";
                 echo "Amortização: R$ " . number_format($this->amortizacao, 2, ',', '.') . " - Saldo Devedor: R$ " . number_format($this->saldoDevedor, 2, ',', '.');  
                 echo "</pre>";
+
+                Amortizacao::print();
 
             }else {
 
@@ -58,6 +60,10 @@ class Amortizacao{
 
     /**
      * Caracterizado pela Prestação Constante
+     * Prestação = Saldo devedor * taxa * (taxa + 1) ^ parcelas / taxa + 1 ^ parcelas - 1
+     * Juros = Saldo devedor * taxa
+     * Amortização = Prestação - Juros
+     * Saldo devedor -= Amortização
      */
     public function modeloPrice(){
 
@@ -66,17 +72,17 @@ class Amortizacao{
 
         //Define o valor da prestação
         $this->prestacao = $this->saldoDevedor * $calculoTaxa * (pow($calculoTaxa + 1, $this->parcelas)) / (pow(1 + $calculoTaxa, $this->parcelas) - 1);
-
-        echo number_format($this->prestacao, 2, ',', '.');
-        
+                
         //Operação        
         for($i = 0;  $i <= $this->parcelas; $i++){ 
             
-            if($i == 0){
+            if($i == 0){    
 
                 echo "<pre>";
                 echo "Prestação: R$ " . number_format($this->prestacao, 2, ',', '.') . " - Saldo Devedor: R$ " . number_format($this->saldoDevedor, 2, ',', '.');  
                 echo "</pre>";
+                
+                Amortizacao::print();
 
             }else {
 
@@ -95,6 +101,12 @@ class Amortizacao{
 
         }        
         
+    }
+
+    private function print(){
+        echo "<pre>";
+        echo "<p>Parcelas | Juros | Amortização | Prestação | Saldo Devedor</p>" ;
+        echo "</pre>";
     }
 
 }
