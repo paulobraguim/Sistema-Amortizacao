@@ -11,9 +11,17 @@ class Amortizacao{
 
     public function __construct($paramSaldoDevedor, $paramParcelas, $paramTaxa){
 
-        $this->saldoDevedor = $paramSaldoDevedor;
-        $this->parcelas = $paramParcelas;
-        $this->taxa = $paramTaxa;
+        if(is_numeric($paramSaldoDevedor) && is_numeric($paramTaxa) && $paramTaxa > 0 && $paramParcelas > 0){
+
+            $this->saldoDevedor = $paramSaldoDevedor;
+            $this->parcelas = $paramParcelas;
+            $this->taxa = $paramTaxa;
+
+        }else {
+
+            header("location: /");
+
+        }        
 
     }
 
